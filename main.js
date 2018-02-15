@@ -1,3 +1,5 @@
+// Heading
+
 var ml = { timelines: {}};
 
 ml.timelines["ml5"] = anime.timeline({loop: false})
@@ -29,7 +31,16 @@ ml.timelines["ml5"] = anime.timeline({loop: false})
     easing: "easeOutExpo",
     duration: 600,
     offset: '-=600'
+  }).add({
+    targets: '.ml5 .letters-up',
+    opacity: [0,1],
+    translateY: ["-0.5em", 0],
+    easing: "easeOutExpo",
+    duration: 600,
+    offset: '-=600'
   });
+
+// Main content
 
 var ml2= {timelines: {}};
 ml2.timelines["ml6"] = anime.timeline({loop: false})
@@ -61,4 +72,18 @@ ml2.timelines["ml6"] = anime.timeline({loop: false})
     	easing: "easeOutExpo",
     	duration: 1000,
     	offset: '-=1000'
-	});
+	}).add({
+    targets: '.ml6 .letters-down1',
+      opacity: [0,1],
+      translateY: ["0.5em", 0],
+      easing: "easeOutExpo",
+      duration: 1000,
+      offset: '-=1000'
+  }).add({
+    targets: '.ml6 .letters-up1',
+      opacity: [0,1],
+      translateY: ["-0.5em", 0],
+      easing: "easeOutExpo",
+      duration: 1000,
+      offset: '-=1000'
+  });
