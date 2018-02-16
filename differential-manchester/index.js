@@ -1,6 +1,134 @@
-$("#about_diffmanchester").typed({
+var string = "";
+string+="It is the combination of RZ and NRZ-I.<br>" 
+string+="The transition is in the middle of the bit but this time value of the bit decides which transition.<br>"
+string+="Rules<br>"
+string+="0 means transition<br>"
+string+="1 means no transition<br>"
+
+
+// Typing Content
+$("#about_differentialmanchester").typed({
     strings: [
-      "Here is all about Differential Manchester",
+      string
     ],
     typeSpeed: 0,
   });
+
+
+
+$(document).ready(function () {
+	$('#submit').click(function(){
+		var data_bit = $('#data_bit').val();
+		var voltage = $("#voltage").val();
+		if(data_bit==="" && voltage==="")
+		{
+			 Materialize.toast('Please enter data bits and voltage', 1000)
+		}
+		else if(data_bit==="")
+		{
+			Materialize.toast('Please enter data bits', 1000)	
+		}
+		else if(voltage==="")
+		{
+			Materialize.toast('Please enter voltage', 1000)	
+		}
+		else
+		{
+			console.log(data_bit);
+			console.log(voltage);	
+			arr_databit = data_bit.toString();
+			console.log(arr_databit);
+			var x_axis=[];
+			var y_axis = [];
+			var i=0;
+			var k=0;
+			if(arr_databit[0]=="1")
+			{
+				x_axis[k] = k;
+				y_axis[k] = -1*voltage;
+				k++;
+			}
+			else
+			{
+				x_axis[k] = k;
+				y_axis[k] = 1*voltage;	
+				k++;
+				
+			}
+			
+			for(var i=0;i<arr_databit.length;i++)
+			{	
+				if(arr_databit[i]=="0")
+				{
+                  if(y_axis[k-1]==1*voltage)
+				  {					  
+				x_axis[k] = k;
+				y_axis[k] = -1*voltage;	
+				k++;
+				x_axis[k] = k;
+				y_axis[k] = 1*voltage;
+				k++;
+				  }
+				  else
+				  {
+				  x_axis[k] = k;
+				y_axis[k] = 1*voltage;	
+				k++;
+				x_axis[k] = k;
+				y_axis[k] = -1*voltage;
+				k++;
+				  }
+				}
+				else
+				{
+					if(y_axis[k-1]==1*voltage)
+					{
+				x_axis[k] = k;
+				y_axis[k] = 1*voltage;
+				k++;
+				x_axis[k]=k;
+				y_axis[k]=-1*voltage;
+				k++;
+					}
+					else
+					{
+						x_axis[k] = k;
+				y_axis[k] = -1*voltage;
+				k++;
+				x_axis[k]=k;
+				y_axis[k]=1*voltage;
+				k++;
+					}
+						
+				}
+				
+			}
+
+			console.log(x_axis);
+			console.log(y_axis);
+
+			var trace4 = {
+			  x: x_axis, 
+			  y: y_axis, 
+			  mode: 'lines+markers', 
+			  name: 'vh', 
+			  line: {shape: 'vh'}, 
+			  type: 'scatter'
+			};
+
+
+			var data = [trace4];
+
+			var layout = {legend: {
+			    y: 0, 
+			    traceorder: 'reversed', 
+			    font: {size: 16}, 
+			    yref: 'paper'
+			}};
+
+			Plotly.newPlot('myDiv', data, layout);
+
+		}
+		
+	});
+})
