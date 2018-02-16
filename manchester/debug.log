@@ -1,0 +1,13 @@
+[0216/211554.666:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\temp\settings.dat: Access is denied. (0x5)
+[0216/212924.638:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\temp\settings.dat: Access is denied. (0x5)
+[0216/212924.654:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\temp\settings.dat: Access is denied. (0x5)
+[0216/212924.862:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0216/212924.914:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0216/212925.369:ERROR:crashpad_win.cc(223)] Crashpad handler failed to start, crash reporting disabled
+[0216/212925.369:ERROR:crashpad_win.cc(223)] Crashpad handler failed to start, crash reporting disabled
+[0216/213347.678:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\temp\settings.dat: Access is denied. (0x5)
+[0216/213347.741:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\temp\settings.dat: Access is denied. (0x5)
+[0216/213347.803:ERROR:registration_protocol_win.cc(60)] WaitNamedPipe: The system cannot find the file specified. (0x2)
+[0216/213347.819:ERROR:crashpad_win.cc(223)] Crashpad handler failed to start, crash reporting disabled
+[0216/213347.882:ERROR:registration_protocol_win.cc(60)] WaitNamedPipe: The system cannot find the file specified. (0x2)
+[0216/213347.882:ERROR:crashpad_win.cc(223)] Crashpad handler failed to start, crash reporting disabled
