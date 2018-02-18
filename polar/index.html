@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>NRZ-I</title>
-	 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,900' rel='stylesheet' type='text/css'>
+	<title>Polar Line Encoding</title>
+	  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,900' rel='stylesheet' type='text/css'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.1.0/particles.min.js"></script>
@@ -14,15 +14,17 @@
 
 	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.7/typed.min.js" type="text/javascript"></script>
-        <!-- Latest compiled and minified plotly.js JavaScript -->
+    <!-- Latest compiled and minified plotly.js JavaScript -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 </head>
 <body>
-<h1>NRZ-I</h1>
-<div id="about_nrz-i">
+<h1>Polar Line Encoding</h1>
+<!-- Display information for Polar -->
+<div id="about_polar">
 
 </div>
+<!-- End Display information for Polar -->
 
 <!-- Input for bits -->
   <div class="row">
@@ -43,11 +45,21 @@
       </div>
   </div>
 <!-- Input end for bits -->
-
-<div id="myDiv">
+<p class="plot">Plot for NRZ-L</p>
+<div id="nrz_l">
+</div>
+<p class="plot">Plot for NRZ-I</p>
+<div id="nrz_i">
+</div>
+<p class="plot">Plot for Manchester</p>
+<div id="manchester">
+</div>
+<p class="plot">Plot for Differential Manchester</p>
+<div id="differential_manchester">
 </div>
 
-<div class="fixed-action-btn">
+<!-- Floating button -->
+  <div class="fixed-action-btn">
     <a class="btn-floating btn-large red">
       <i class="large material-icons">folder</i>
     </a>
@@ -59,6 +71,7 @@
       <li><a class="btn-floating tooltipped black" data-position="left" data-tooltip="Polar Encodings" href="../polar"><i class="material-icons">P</i></a></li>
     </ul>
   </div>
+<!-- End of floating button -->
 </body>
 <script type="text/javascript" src="index.js"></script>
 </html>

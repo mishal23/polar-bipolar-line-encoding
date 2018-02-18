@@ -106,9 +106,20 @@ $(document).ready(function () {
 
 			console.log(x_axis);
 			console.log(y_axis);
-
+			var copy_x_axis = [];
+			var pos=0.5;
+			copy_x_axis[0]=0;
+			for(var i=0;i<x_axis.length;i++)
+			{
+				if(i!=0)
+				{
+					copy_x_axis[i]=pos;
+					console.log(copy_x_axis[i]);
+					pos+=0.5;
+				}
+			}
 			var trace4 = {
-			  x: x_axis, 
+			  x: copy_x_axis, 
 			  y: y_axis, 
 			  mode: 'lines+markers', 
 			  name: 'vh', 
