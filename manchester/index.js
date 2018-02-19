@@ -1,6 +1,6 @@
 var string = "";
 string+="It is the combination of RZ and NRZ-L.<br>" 
-string+="The duration of bit is divided into 2 halves it remains at one level in first half and other level in second half.<br>"
+string+="The duration of bit is divided into 2 halves it remains at one level in first half and other level in second half."
 
 
 // Typing Content
@@ -14,6 +14,14 @@ $("#about_manchester").typed({
 
 
 $(document).ready(function () {
+
+		particlesJS.load('particles-js', '../particles.json', function() {
+		console.log('callback - particles.json config loaded');
+	});
+
+	$('#terminal-like').height($('#aboutmecontent').height());
+
+
 	$('#submit').click(function(){
 		var data_bit = $('#data_bit').val();
 		var voltage = $("#voltage").val();

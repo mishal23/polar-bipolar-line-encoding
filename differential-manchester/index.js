@@ -3,7 +3,7 @@ string+="It is the combination of RZ and NRZ-I.<br>"
 string+="The transition is in the middle of the bit but this time value of the bit decides which transition.<br>"
 string+="Rules<br>"
 string+="0 means transition<br>"
-string+="1 means no transition<br>"
+string+="1 means no transition"
 
 
 // Typing Content
@@ -17,6 +17,14 @@ $("#about_differentialmanchester").typed({
 
 
 $(document).ready(function () {
+
+	particlesJS.load('particles-js', '../particles.json', function() {
+		console.log('callback - particles.json config loaded');
+	});
+
+	$('#terminal-like').height(1.5 * $('#aboutmecontent').height());
+
+
 	$('#submit').click(function(){
 		var data_bit = $('#data_bit').val();
 		var voltage = $("#voltage").val();

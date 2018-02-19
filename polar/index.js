@@ -1,7 +1,23 @@
 
 $(".plot").hide();
+var string = "";
+string+="Here is all about Polar line encoding"
+
+// Typing Content
+$("#about_polar").typed({
+    strings: [
+      string
+    ],
+    typeSpeed: 0,
+  });
 
 $(document).ready(function () {
+		particlesJS.load('particles-js', '../particles.json', function() {
+		console.log('callback - particles.json config loaded');
+	});
+
+	$('#terminal-like').height($('#aboutmecontent').height());
+	
 	$('#submit').click(function(){
 		var data_bit = $('#data_bit').val();
 		var voltage = $("#voltage").val();

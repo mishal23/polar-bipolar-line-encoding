@@ -15,6 +15,12 @@ $("#about_nrz-l").typed({
 
 
 $(document).ready(function () {
+
+	particlesJS.load('particles-js', '../particles.json', function() {
+		console.log('callback - particles.json config loaded');
+	});
+
+	$('#terminal-like').height($('#aboutmecontent').height());
 	$('#submit').click(function(){
 		var data_bit = $('#data_bit').val();
 		var voltage = $("#voltage").val();
