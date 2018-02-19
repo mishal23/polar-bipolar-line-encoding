@@ -1,8 +1,8 @@
 var string = "";
 string+="In NRZ-L the level of voltage determines the value of the bit.<br>"
 string+="Rules:<br>"
-string+="0 bit is represented by +V<br>"
-string+="1 bit is represented by -V"
+string+="• 0 bit is represented by +V<br>"
+string+="• 1 bit is represented by -V."
 
 // Typing Content
 $("#about_nrz-l").typed({
@@ -20,21 +20,21 @@ $(document).ready(function () {
 		console.log('callback - particles.json config loaded');
 	});
 
-	$('#terminal-like').height($('#aboutmecontent').height());
+	$('#terminal').height(1.3 * $('#data-entry').height());
 	$('#submit').click(function(){
 		var data_bit = $('#data_bit').val();
 		var voltage = $("#voltage").val();
 		if(data_bit==="" && voltage==="")
 		{
-			 Materialize.toast('Please enter data bits and voltage', 1000)
+			 Materialize.toast('Please enter data bits and voltage', 1000, 'black')
 		}
 		else if(data_bit==="")
 		{
-			Materialize.toast('Please enter data bits', 1000)	
+			Materialize.toast('Please enter data bits', 1000, 'black')	
 		}
 		else if(voltage==="")
 		{
-			Materialize.toast('Please enter voltage', 1000)	
+			Materialize.toast('Please enter voltage', 1000, 'black')	
 		}
 		else
 		{
@@ -94,7 +94,7 @@ $(document).ready(function () {
 			    yref: 'paper'
 			}};
 
-			Plotly.newPlot('myDiv', data, layout);
+			Plotly.newPlot('nrz_l', data, layout);
 
 		}
 		

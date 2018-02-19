@@ -2,89 +2,83 @@
 <html>
 <head>
 	<title>Polar Line Encoding</title>
-	  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,900' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,900' rel='stylesheet' type='text/css'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.1.0/particles.min.js"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" type="text/javascript"></script>
-  <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
-	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.7/typed.min.js" type="text/javascript"></script>
-    <!-- Latest compiled and minified plotly.js JavaScript -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.7/typed.min.js" type="text/javascript"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../topics.css">
 </head>
 <body>
- <header>
+  
+  <header>
     <div class="container" style="margin: 0;">
-      <div class="beginning-section">
+      <div class="header-section">
         <div id="particles-js">
         </div>
-        <div class="coding-font center-align">
-          
-          <span class="wctext">Polar Line Encoding</span>
+        <div class="header-font center-align">
+            <span class="topic">Polar Line Encoding</span>
         </div>
       </div>
     </div>
   </header>
 
-<div class="container" id="aboutmecontainer">
-      <div class="row" style="margin-top: 30px; margin-bottom: 40px;">
-        <div class="col s12 m12 l6" id="about-terminal">
-          <div style="background-color: #DEDEDE;" id="terminal-like">
-            <center>About Polar Line Encoding</center>
-            <div class="black white-text" id="black-screen">
-              <div class="det-div">
-                <span id="about_polar"></span>
-              </div>
+  <div class="container">
+    <div class="row" style="margin-top: 30px; margin-bottom: 40px;">
+      <div class="col s12 m12 l6">
+        <div style="background-color: #DEDEDE;" id="terminal">
+          <center>About Polar Line Encoding</center>
+          <div class="black white-text" id="black-screen">
+            <div class="details">
+              <span id="about_polar"></span>
             </div>
           </div>
         </div>
-        <div class="col s12 m12 l6" id="aboutmecontent">
-            <div class="row">
-      <div class="row">
-        <div class="input-field col s5">
-          <input id="data_bit" type="text" class="validate">
-          <label for="data_bit">Enter Data Bit</label>
-        </div>
-        <div class="input-field col s5">
-          <input id="voltage" type="text" class="validate">
-          <label for="voltage">Enter Voltage</label>
-        </div>
-        <div class="" style="padding-top: 13px;">
-          <button class="btn waves-effect waves-light" id="submit">Generate Graph
-            <i class="material-icons right">send</i>
-          </button>
-        </div>
       </div>
-  </div>
-
+      <div class="col s12 m12 l6" id="data-entry" style="padding-top: 30px;">
+        <div class="row">
+          <div class="input-field col s5">
+            <input id="data_bit" type="text" class="validate">
+            <label for="data_bit">Enter Data Bit</label>
+          </div>
+          <div class="input-field col s5">
+            <input id="voltage" type="text" class="validate">
+            <label for="voltage">Enter Voltage</label>
+          </div>
+          <div class="" style="padding-top: 13px;">
+            <button class="btn waves-effect waves-light" id="submit">Generate Graph
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
-<!-- Input end for bits -->
-<p class="plot">Plot for NRZ-L</p>
-<div id="nrz_l">
-</div>
-<p class="plot">Plot for NRZ-I</p>
-<div id="nrz_i">
-</div>
-<p class="plot">Plot for Manchester</p>
-<div id="manchester">
-</div>
-<p class="plot">Plot for Differential Manchester</p>
-<div id="differential_manchester">
-</div>
+  <p class="plot">Plot for NRZ-L</p>
+    <div id="nrz_l">
+    </div>
 
-<!-- Floating button -->
+  <p class="plot">Plot for NRZ-I</p>
+    <div id="nrz_i">
+    </div>
+
+  <p class="plot">Plot for Manchester</p>
+    <div id="manchester">
+    </div>
+
+  <p class="plot">Plot for Differential Manchester</p>
+    <div id="differential_manchester">
+    </div>
+
+  <!-- Floating button -->
   <div class="fixed-action-btn">
-    <a class="btn-floating btn-large red">
+    <a class="btn-floating btn-large tooltipped red" data-position="left" data-tooltip="Home" href="../">
       <i class="large material-icons">folder</i>
     </a>
     <ul>
@@ -95,7 +89,7 @@
       <li><a class="btn-floating tooltipped black" data-position="left" data-tooltip="Polar Encodings" href="../polar"><i class="material-icons">P</i></a></li>
     </ul>
   </div>
-<!-- End of floating button -->
+  <!-- End of floating button -->
 </body>
 <script type="text/javascript" src="index.js"></script>
 </html>

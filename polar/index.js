@@ -12,26 +12,26 @@ $("#about_polar").typed({
   });
 
 $(document).ready(function () {
-		particlesJS.load('particles-js', '../particles.json', function() {
-		console.log('callback - particles.json config loaded');
+	particlesJS.load('particles-js', '../particles.json', function() {
+		console.log('particles.json config loaded');
 	});
 
-	$('#terminal-like').height($('#aboutmecontent').height());
+	$('#terminal').height($('#data-entry').height());
 	
 	$('#submit').click(function(){
 		var data_bit = $('#data_bit').val();
 		var voltage = $("#voltage").val();
 		if(data_bit==="" && voltage==="")
 		{
-			 Materialize.toast('Please enter data bits and voltage', 1000)
+			 Materialize.toast('Please enter data bits and voltage', 1000, 'black')
 		}
 		else if(data_bit==="")
 		{
-			Materialize.toast('Please enter data bits', 1000)	
+			Materialize.toast('Please enter data bits', 1000, 'black')	
 		}
 		else if(voltage==="")
 		{
-			Materialize.toast('Please enter voltage', 1000)	
+			Materialize.toast('Please enter voltage', 1000, 'black')	
 		}
 		else
 		{

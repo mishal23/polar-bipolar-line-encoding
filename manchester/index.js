@@ -3,7 +3,6 @@ string+="It is the combination of RZ and NRZ-L.<br>"
 string+="The duration of bit is divided into 2 halves it remains at one level in first half and other level in second half."
 
 
-// Typing Content
 $("#about_manchester").typed({
     strings: [
       string
@@ -15,11 +14,11 @@ $("#about_manchester").typed({
 
 $(document).ready(function () {
 
-		particlesJS.load('particles-js', '../particles.json', function() {
-		console.log('callback - particles.json config loaded');
+	particlesJS.load('particles-js', '../particles.json', function() {
+		console.log('particles.json config loaded');
 	});
 
-	$('#terminal-like').height($('#aboutmecontent').height());
+	$('#terminal').height(1.3 * $('#data-entry').height());
 
 
 	$('#submit').click(function(){
@@ -27,15 +26,15 @@ $(document).ready(function () {
 		var voltage = $("#voltage").val();
 		if(data_bit==="" && voltage==="")
 		{
-			 Materialize.toast('Please enter data bits and voltage', 1000)
+			 Materialize.toast('Please enter data bits and voltage', 1000, 'black')
 		}
 		else if(data_bit==="")
 		{
-			Materialize.toast('Please enter data bits', 1000)	
+			Materialize.toast('Please enter data bits', 1000, 'black')	
 		}
 		else if(voltage==="")
 		{
-			Materialize.toast('Please enter voltage', 1000)	
+			Materialize.toast('Please enter voltage', 1000, 'black')	
 		}
 		else
 		{
@@ -117,7 +116,7 @@ $(document).ready(function () {
 			    yref: 'paper'
 			}};
 
-			Plotly.newPlot('myDiv', data, layout);
+			Plotly.newPlot('manchester', data, layout);
 
 		}
 		

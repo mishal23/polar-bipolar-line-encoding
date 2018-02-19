@@ -2,9 +2,8 @@ var string = "";
 string+="It is the combination of RZ and NRZ-I.<br>" 
 string+="The transition is in the middle of the bit but this time value of the bit decides which transition.<br>"
 string+="Rules<br>"
-string+="0 means transition<br>"
-string+="1 means no transition"
-
+string+="• 0 means transition<br>"
+string+="• 1 means no transition."
 
 // Typing Content
 $("#about_differentialmanchester").typed({
@@ -19,10 +18,10 @@ $("#about_differentialmanchester").typed({
 $(document).ready(function () {
 
 	particlesJS.load('particles-js', '../particles.json', function() {
-		console.log('callback - particles.json config loaded');
+		console.log('particles.json config loaded');
 	});
 
-	$('#terminal-like').height(1.5 * $('#aboutmecontent').height());
+	$('#terminal').height(1.5 * $('#data-entry').height());
 
 
 	$('#submit').click(function(){
@@ -30,15 +29,15 @@ $(document).ready(function () {
 		var voltage = $("#voltage").val();
 		if(data_bit==="" && voltage==="")
 		{
-			 Materialize.toast('Please enter data bits and voltage', 1000)
+			 Materialize.toast('Please enter data bits and voltage', 1000, 'black')
 		}
 		else if(data_bit==="")
 		{
-			Materialize.toast('Please enter data bits', 1000)	
+			Materialize.toast('Please enter data bits', 1000, 'black')	
 		}
 		else if(voltage==="")
 		{
-			Materialize.toast('Please enter voltage', 1000)	
+			Materialize.toast('Please enter voltage', 1000, 'black')	
 		}
 		else
 		{
@@ -145,7 +144,7 @@ $(document).ready(function () {
 			    yref: 'paper'
 			}};
 
-			Plotly.newPlot('myDiv', data, layout);
+			Plotly.newPlot('differential_manchester', data, layout);
 
 		}
 		

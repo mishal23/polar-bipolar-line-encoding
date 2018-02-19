@@ -1,5 +1,4 @@
-// Heading
-
+// Title of assignment animation
 var ml = { timelines: {}};
 
 ml.timelines["ml5"] = anime.timeline({loop: false})
@@ -40,8 +39,8 @@ ml.timelines["ml5"] = anime.timeline({loop: false})
     offset: '-=600'
   });
 
-// Main content
 
+// Main sub topics animation
 var ml2= {timelines: {}};
 ml2.timelines["ml6"] = anime.timeline({loop: false})
 .add({

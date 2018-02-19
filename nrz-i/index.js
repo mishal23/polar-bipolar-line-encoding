@@ -1,6 +1,12 @@
+string = "";
+string+="In NRZ-I the inversion or lack of inversion determines the value of the bit.<br>"
+string+="Rules:<br>"
+string+="• 0 bit means no change in the level of voltage<br>"
+string+="• 1 bit means change the level of voltage."
+
 $("#about_nrz-i").typed({
     strings: [
-      "Here is all about NRZ-I",
+      string,
     ],
     typeSpeed: 0,
   });
@@ -11,22 +17,22 @@ $(document).ready(function () {
 		console.log('callback - particles.json config loaded');
 	});
 
-	$('#terminal-like').height($('#aboutmecontent').height());
+	$('#terminal').height(1.8 * $('#data-entry').height());
 
 	$('#submit').click(function(){
 		var data_bit = $('#data_bit').val();
 		var voltage = $("#voltage").val();
 		if(data_bit==="" && voltage==="")
 		{
-			 Materialize.toast('Please enter data bits and voltage', 1000)
+			 Materialize.toast('Please enter data bits and voltage', 1000, 'black')
 		}
 		else if(data_bit==="")
 		{
-			Materialize.toast('Please enter data bits', 1000)	
+			Materialize.toast('Please enter data bits', 1000, 'black')	
 		}
 		else if(voltage==="")
 		{
-			Materialize.toast('Please enter voltage', 1000)	
+			Materialize.toast('Please enter voltage', 1000, 'black')	
 		}
 		else
 		{
@@ -106,7 +112,7 @@ $(document).ready(function () {
 			    yref: 'paper'
 			}};
 
-			Plotly.newPlot('myDiv', data, layout);
+			Plotly.newPlot('nrz_i', data, layout);
 
 		}
 		
