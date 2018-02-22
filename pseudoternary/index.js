@@ -1,11 +1,11 @@
 var string = "";
-string+="AMI means Alternate Mark Inversion<br>"
+string+="A variation of AMI encoding is called pseudoternanry.<br>"
 string+="Rules:<br>"
-string+="0 bit is represented by neutral zero voltage<br>"
-string+="1 bit is represented alternating positive and negative voltage"
+string+="• 1 bit is encoded as a neutral zero voltage<br>"
+string+="• 0 bit is encoded as alternating positive and negative voltages."
 
 // Typing Content
-$("#about_ami").typed({
+$("#about_pseudoternary").typed({
     strings: [
       string
     ],
@@ -15,6 +15,12 @@ $("#about_ami").typed({
 
 
 $(document).ready(function () {
+
+	particlesJS.load('particles-js', '../particles.json', function() {
+		console.log('callback - particles.json config loaded');
+	});
+	$('#terminal').height(1.5 * $('#data-entry').height());
+
 	$('#submit').click(function(){
 		var data_bit = $('#data_bit').val();
 		var voltage = $("#voltage").val();
@@ -54,16 +60,15 @@ $(document).ready(function () {
 			k++;
 			for(var i=0;i<arr_databit.length;i++)
 			{	
-				if(arr_databit[i]==1&&i==0)
+				if(arr_databit[i]==0 && i==0)
 				{	
 					x_axis[k] = k;
 					y_axis[k] = 1*voltage;
 					prev=1;
-					
 				}
 				else
 				{
-				  if(arr_databit[i]==1)
+				  if(arr_databit[i]==0)
 				  {
 					  if(prev==-1)
 					  {
@@ -120,7 +125,7 @@ $(document).ready(function () {
 			    yref: 'paper'
 			}};
 
-			Plotly.newPlot('myDiv', data, layout);
+			Plotly.newPlot('pseudoternary', data, layout);
 
 		}
 		
