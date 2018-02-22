@@ -40,79 +40,106 @@ $(document).ready(function () {
 			console.log(voltage);	
 
 			arr_databit = data_bit.toString();
-			
-			var x_axis=[];
-			var y_axis = [];
-			var i=0;
-			var k=0;
-			console.log(arr_databit);
-			if(arr_databit[0]=="0")
+			var proper = true;
+			var count=0;
+			for(i=0;i<arr_databit.length;i++)
 			{
-				x_axis[k] = k;
-				y_axis[k] = 1*voltage;
+				if(arr_databit[i]==="0" || arr_databit[i]==="1")
+				{
+					count++;
+				}
+			}
+			if(count!==arr_databit.length)
+			{
+				proper=false;
+			}
+			if(!Number(voltage) && !proper)
+			{
+				Materialize.toast('Please enter numerical value of voltage only, and binary databits only', 2000, 'black');
+			}
+			else if(!Number(voltage))
+			{	
+				Materialize.toast('Please enter numerical value of voltage only', 2000, 'black');
+			}
+			else if(!proper)
+			{
+				Materialize.toast('Please enter binary databits only', 2000, 'black');
 			}
 			else
 			{
-				x_axis[k] = k;
-				y_axis[k] = -1*voltage;	
-			}
-			k++;
-			for(var i=0;i<=arr_databit.length-1;i++)
-			{	
-				if(i==0)
+				var x_axis=[];
+				var y_axis = [];
+				var i=0;
+				var k=0;
+				console.log(arr_databit);
+				if(arr_databit[0]=="0")
 				{
-					console.log("0 mein ghussa");
-					if(arr_databit[0]=="0")
-					{
-						console.log("0 mila");
-						x_axis[k] = k;
-						y_axis[k] = 1*voltage;
-					}
-					else
-					{
-						x_axis[k] = k;
-						y_axis[k] = -1*voltage;	
-					}
+					x_axis[k] = k;
+					y_axis[k] = 1*voltage;
 				}
 				else
 				{
-					if(arr_databit[i]=="0")
-					{	
-						x_axis[k] = k;
-						y_axis[k] = y_axis[k-1];
+					x_axis[k] = k;
+					y_axis[k] = -1*voltage;	
+				}
+				k++;
+				for(var i=0;i<=arr_databit.length-1;i++)
+				{	
+					if(i==0)
+					{
+						console.log("0 mein ghussa");
+						if(arr_databit[0]=="0")
+						{
+							console.log("0 mila");
+							x_axis[k] = k;
+							y_axis[k] = 1*voltage;
+						}
+						else
+						{
+							x_axis[k] = k;
+							y_axis[k] = -1*voltage;	
+						}
 					}
 					else
 					{
-						x_axis[k] = k;
-						y_axis[k] = -1*y_axis[k-1];	
+						if(arr_databit[i]=="0")
+						{	
+							x_axis[k] = k;
+							y_axis[k] = y_axis[k-1];
+						}
+						else
+						{
+							x_axis[k] = k;
+							y_axis[k] = -1*y_axis[k-1];	
+						}
 					}
+					k++;
 				}
-				k++;
+
+				console.log(x_axis);
+				console.log(y_axis);
+
+				var trace4 = {
+				  x: x_axis, 
+				  y: y_axis, 
+				  mode: 'lines+markers', 
+				  name: 'vh', 
+				  line: {shape: 'vh'}, 
+				  type: 'scatter'
+				};
+
+
+				var data = [trace4];
+
+				var layout = {legend: {
+				    y: 0, 
+				    traceorder: 'reversed', 
+				    font: {size: 16}, 
+				    yref: 'paper'
+				}};
+
+				Plotly.newPlot('nrz_i', data, layout);
 			}
-
-			console.log(x_axis);
-			console.log(y_axis);
-
-			var trace4 = {
-			  x: x_axis, 
-			  y: y_axis, 
-			  mode: 'lines+markers', 
-			  name: 'vh', 
-			  line: {shape: 'vh'}, 
-			  type: 'scatter'
-			};
-
-
-			var data = [trace4];
-
-			var layout = {legend: {
-			    y: 0, 
-			    traceorder: 'reversed', 
-			    font: {size: 16}, 
-			    yref: 'paper'
-			}};
-
-			Plotly.newPlot('nrz_i', data, layout);
 
 		}
 		
