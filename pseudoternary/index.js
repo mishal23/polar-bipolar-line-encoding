@@ -74,7 +74,7 @@ $(document).ready(function () {
 				var i=0;
 				var k=0;
 				var prev=0;
-				if(arr_databit[0]==0)
+				if(arr_databit[0]==1)
 				{
 					x_axis[k] = k;
 					y_axis[k] = 0;
