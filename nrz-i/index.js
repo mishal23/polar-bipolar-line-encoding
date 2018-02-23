@@ -87,10 +87,8 @@ $(document).ready(function () {
 				{	
 					if(i==0)
 					{
-						console.log("0 mein ghussa");
 						if(arr_databit[0]=="0")
 						{
-							console.log("0 mila");
 							x_axis[k] = k;
 							y_axis[k] = 1*voltage;
 						}
