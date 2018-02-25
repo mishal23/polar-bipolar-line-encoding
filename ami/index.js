@@ -154,7 +154,7 @@ $(document).ready(function () {
 				    yref: 'paper'
 				}};
 
-				Plotly.newPlot('myDiv', data, layout);
+				Plotly.newPlot('ami', data, layout);
 			}
 
 		}
