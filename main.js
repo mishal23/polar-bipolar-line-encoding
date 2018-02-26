@@ -1,4 +1,4 @@
-// Title of assignment animation
+// Title Animation
 var ml = { timelines: {}};
 
 ml.timelines["ml5"] = anime.timeline({loop: false})
