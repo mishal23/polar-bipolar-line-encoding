@@ -1,7 +1,7 @@
 
 $(".plot").hide();
 var string = "";
-string+="Here is all about Polar line encoding"
+string+="All the polar line encoding schemes NRZ-L, NRZ-I, Manchester, Differential-Manchester has been simulated"
 
 // Typing Content
 $("#about_polar").typed({
