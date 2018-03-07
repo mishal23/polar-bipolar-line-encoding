@@ -19,17 +19,19 @@ $(document).ready(function () {
 	$('#terminal').height($('#data-entry').height());
 	
 	$('#submit').click(function(){
+		//Reading the value of databits and voltage
 		var data_bit = $('#data_bit').val();
 		var voltage = $("#voltage").val();
-		if(data_bit==="" && voltage==="")
+		//Checking if the user has not entered the databits and voltage
+		if(data_bit==="" && voltage==="")  
 		{
 			 Materialize.toast('Please enter data bits and voltage', 1000, 'black')
 		}
-		else if(data_bit==="")
+		else if(data_bit==="")    //Checking if the user has not entered the databits
 		{
 			Materialize.toast('Please enter data bits', 1000, 'black')	
 		}
-		else if(voltage==="")
+		else if(voltage==="")       //Checking if the user has not entered the voltage
 		{
 			Materialize.toast('Please enter voltage', 1000, 'black')	
 		}
@@ -52,15 +54,16 @@ $(document).ready(function () {
 			{
 				proper=false;
 			}
+			//Checking if the user has entered only 0s and 1s as databits and numerical value of voltage
 			if(!Number(voltage) && !proper)
 			{
 				Materialize.toast('Please enter numerical value of voltage only, and binary databits only', 2000, 'black');
 			}
-			else if(!Number(voltage))
+			else if(!Number(voltage))    //check if voltage is not correct
 			{	
 				Materialize.toast('Please enter numerical value of voltage only', 2000, 'black');
 			}
-			else if(!proper)
+			else if(!proper)             //check if databits are not proper
 			{
 				Materialize.toast('Please enter binary databits only', 2000, 'black');
 			}

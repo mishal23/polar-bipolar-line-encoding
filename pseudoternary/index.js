@@ -22,17 +22,19 @@ $(document).ready(function () {
 	$('#terminal').height(1.5 * $('#data-entry').height());
 
 	$('#submit').click(function(){
+		//Reading the value of databits and voltage
 		var data_bit = $('#data_bit').val();
 		var voltage = $("#voltage").val();
+		//Checking if the user has not entered the databits and voltage
 		if(data_bit==="" && voltage==="")
 		{
 			 Materialize.toast('Please enter data bits and voltage', 1000)
 		}
-		else if(data_bit==="")
+		else if(data_bit==="")  //Checking if the user has not entered the databits
 		{
 			Materialize.toast('Please enter data bits', 1000)	
 		}
-		else if(voltage==="")
+		else if(voltage==="")   //Checking if the user has not entered the voltage
 		{
 			Materialize.toast('Please enter voltage', 1000)	
 		}
@@ -51,6 +53,7 @@ $(document).ready(function () {
 					count++;
 				}
 			}
+			//Checking if the user has entered only 0s and 1s as databits and numerical value of voltage
 			if(count!==arr_databit.length)
 			{
 				proper=false;
@@ -59,11 +62,11 @@ $(document).ready(function () {
 			{
 				Materialize.toast('Please enter numerical value of voltage only, and binary databits only', 2000, 'black');
 			}
-			else if(!Number(voltage))
+			else if(!Number(voltage))   //check if voltage is not correct
 			{	
 				Materialize.toast('Please enter numerical value of voltage only', 2000, 'black');
 			}
-			else if(!proper)
+			else if(!proper)             //check if databits are not proper
 			{
 				Materialize.toast('Please enter binary databits only', 2000, 'black');
 			}
@@ -74,6 +77,11 @@ $(document).ready(function () {
 				var i=0;
 				var k=0;
 				var prev=0;
+				
+				//initial setting for time=0
+				//1 means 0 voltage
+				//0 means +ve voltage
+				
 				if(arr_databit[0]==1)
 				{
 					x_axis[k] = k;
@@ -87,7 +95,7 @@ $(document).ready(function () {
 				k++;
 				for(var i=0;i<arr_databit.length;i++)
 				{	
-					if(arr_databit[i]==0 && i==0)
+					if(arr_databit[i]==0 && i==0)    //if first bit is 0 then its +ve voltage
 					{	
 						x_axis[k] = k;
 						y_axis[k] = 1*voltage;
@@ -95,8 +103,8 @@ $(document).ready(function () {
 					}
 					else
 					{
-					  if(arr_databit[i]==0)
-					  {
+					  if(arr_databit[i]==0)        //if bit is 0 and previous voltage level is -ve
+					  {                            //current level is +ve
 						  if(prev==-1)
 						  {
 							  x_axis[k]=k;
@@ -104,21 +112,21 @@ $(document).ready(function () {
 							  prev=1;
 							  
 						  }
-						  else if (prev==1)
-						  {
+						  else if (prev==1)        //if bit is 0 and previous voltage level is +ve
+						  {                        //current level is -ve
 							  x_axis[k]=k;
 							  y_axis[k]=-1*voltage;
 							  prev=-1;
 							  
 					      }
 						  else
-						  {
+						  {                        
 							  x_axis[k]=k;
 							  y_axis[k]=1*voltage;
 							  prev=1;
 						  }
 					  }
-					  else
+					  else                           //if bit=1 then 0 voltage
 					  {
 						  x_axis[k]=k;
 						  y_axis[k]=0;
@@ -132,7 +140,7 @@ $(document).ready(function () {
 
 				console.log(x_axis);
 				console.log(y_axis);
-
+				//setting graph specifications
 				var trace4 = {
 				  x: x_axis, 
 				  y: y_axis, 
@@ -151,7 +159,7 @@ $(document).ready(function () {
 				    font: {size: 16}, 
 				    yref: 'paper'
 				}};
-
+                //calling plotly to plot the graph
 				Plotly.newPlot('pseudoternary', data, layout);
 			}
 		}

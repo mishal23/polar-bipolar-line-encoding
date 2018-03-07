@@ -20,17 +20,23 @@ $(document).ready(function () {
 
 	$('#terminal').height(1.3 * $('#data-entry').height());
 	$('#submit').click(function(){
+		
+		//Reading the value of databits and voltage
+		
 		var data_bit = $('#data_bit').val();
 		var voltage = $("#voltage").val();
+		
+		//Checking if the user has not entered the databits and voltage
+		
 		if(data_bit==="" && voltage==="")
 		{
 			 Materialize.toast('Please enter data bits and voltage', 1000, 'black')
 		}
-		else if(data_bit==="")
+		else if(data_bit==="")   //Checking if the user has not entered the databits
 		{
 			Materialize.toast('Please enter data bits', 1000, 'black')	
 		}
-		else if(voltage==="")
+		else if(voltage==="")     //Checking if the user has not entered the voltage
 		{
 			Materialize.toast('Please enter voltage', 1000, 'black')	
 		}
@@ -48,19 +54,21 @@ $(document).ready(function () {
 					count++;
 				}
 			}
-			if(count!==arr_databit.length)
-			{
+			if(count!==arr_databit.length)       
+			{                             
 				proper=false;
 			}
+			
+			//Checking if the user has not entered numerical voltage and proper databits
 			if(!Number(voltage) && !proper)
 			{
 				Materialize.toast('Please enter numerical value of voltage only, and binary databits only', 2000, 'black');
 			}
-			else if(!Number(voltage))
+			else if(!Number(voltage))  //check if voltage is not correct
 			{	
 				Materialize.toast('Please enter numerical value of voltage only', 2000, 'black');
 			}
-			else if(!proper)
+			else if(!proper)           //check if databits are not proper
 			{
 				Materialize.toast('Please enter binary databits only', 2000, 'black');
 			}
@@ -71,17 +79,25 @@ $(document).ready(function () {
 				var y_axis = [];
 				var i=0;
 				var k=0;
-				if(arr_databit[0]==0)
-				{
+				
+				//Initial Setting for time=0 
+				
+				
+				if(arr_databit[0]==0)           //According to NRZ-L if databit is 0 
+				{                               //Then y-axis should have positive voltage
 					x_axis[k] = k;
 					y_axis[k] = 1*voltage;
 				}
-				else
-				{
+				else                             //If databit is 1 the y-axis should have 
+				{                                //negative voltage
 					x_axis[k] = k;
 					y_axis[k] = -1*voltage;	
 				}
 				k++;
+				
+				//For every databit NRZ-L rules are followed
+				
+				
 				for(var i=0;i<arr_databit.length;i++)
 				{	
 					if(arr_databit[i]==1)
@@ -100,6 +116,8 @@ $(document).ready(function () {
 				console.log(x_axis);
 				console.log(y_axis);
 
+				//settings done to plot the graph
+				
 				var trace4 = {
 				  x: x_axis, 
 				  y: y_axis, 
@@ -119,6 +137,8 @@ $(document).ready(function () {
 				    yref: 'paper'
 				}};
 
+				//plotly called to plot the graph
+				
 				Plotly.newPlot('nrz_l', data, layout);
 			}
 		}

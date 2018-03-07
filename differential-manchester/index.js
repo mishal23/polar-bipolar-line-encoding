@@ -25,17 +25,21 @@ $(document).ready(function () {
 
 
 	$('#submit').click(function(){
+		//Reading the value of databits and voltage
 		var data_bit = $('#data_bit').val();
 		var voltage = $("#voltage").val();
+		
+		//Checking if the user has not entered the databits and voltage
+		
 		if(data_bit==="" && voltage==="")
 		{
 			 Materialize.toast('Please enter data bits and voltage', 1000, 'black')
 		}
-		else if(data_bit==="")
+		else if(data_bit==="")  //Checking if the user has not entered the databits
 		{
 			Materialize.toast('Please enter data bits', 1000, 'black')	
 		}
-		else if(voltage==="")
+		else if(voltage==="")    //Checking if the user has not entered the voltage
 		{
 			Materialize.toast('Please enter voltage', 1000, 'black')	
 		}
@@ -54,6 +58,9 @@ $(document).ready(function () {
 					count++;
 				}
 			}
+			
+			//Checking if the user has entered only 0s and 1s as databits and numerical value of voltage
+			
 			if(count!==arr_databit.length)
 			{
 				proper=false;
@@ -62,11 +69,11 @@ $(document).ready(function () {
 			{
 				Materialize.toast('Please enter numerical value of voltage only, and binary databits only', 2000, 'black');
 			}
-			else if(!Number(voltage))
+			else if(!Number(voltage))   //check if voltage is not correct
 			{	
 				Materialize.toast('Please enter numerical value of voltage only', 2000, 'black');
 			}
-			else if(!proper)
+			else if(!proper)            //check if databits are not proper
 			{
 				Materialize.toast('Please enter binary databits only', 2000, 'black');
 			}
@@ -76,6 +83,11 @@ $(document).ready(function () {
 				var y_axis = [];
 				var i=0;
 				var k=0;
+				
+				//initial setting for time=0
+				//0 means +ve voltage
+				//1 means -ve voltage
+				
 				if(arr_databit[0]=="1")
 				{
 					x_axis[k] = k;
@@ -92,46 +104,46 @@ $(document).ready(function () {
 				
 				for(var i=0;i<arr_databit.length;i++)
 				{	
-					if(arr_databit[i]=="0")
-					{
-	                  if(y_axis[k-1]==1*voltage)
-					  {					  
-					x_axis[k] = k;
-					y_axis[k] = -1*voltage;	
-					k++;
-					x_axis[k] = k;
-					y_axis[k] = 1*voltage;
-					k++;
+					if(arr_databit[i]=="0")          //According to Differential Manchester Rules
+					{                                //if the bit is 0 and previous level of voltage is +ve
+	                  if(y_axis[k-1]==1*voltage)     //for first half it is -ve voltage
+					  {					             //for second half it is +ve voltage
+					   x_axis[k] = k;                //if previous level is -ve then
+					   y_axis[k] = -1*voltage;	     //for first half it is +ve voltage  
+					   k++;                          //for second half it is -ve voltage
+					   x_axis[k] = k;
+					   y_axis[k] = 1*voltage;
+					   k++;
 					  }
 					  else
 					  {
 					  x_axis[k] = k;
-					y_axis[k] = 1*voltage;	
-					k++;
-					x_axis[k] = k;
-					y_axis[k] = -1*voltage;
-					k++;
+					  y_axis[k] = 1*voltage;	
+					  k++;
+					  x_axis[k] = k;
+					  y_axis[k] = -1*voltage;
+					  k++;
 					  }
 					}
 					else
 					{
-						if(y_axis[k-1]==1*voltage)
-						{
-					x_axis[k] = k;
-					y_axis[k] = 1*voltage;
-					k++;
-					x_axis[k]=k;
-					y_axis[k]=-1*voltage;
-					k++;
+						if(y_axis[k-1]==1*voltage)        //if the bit is 1 and previous level of voltage is +ve
+						{                                 //for first half it is +ve voltage
+					     x_axis[k] = k;                   //for second half it is -ve voltage
+					     y_axis[k] = 1*voltage;           //if previous level is -ve then
+					     k++;                             //for first half it is -ve voltage
+					     x_axis[k]=k;                     //for second half it is +ve voltage
+					     y_axis[k]=-1*voltage;
+					     k++;
 						}
 						else
 						{
-							x_axis[k] = k;
-					y_axis[k] = -1*voltage;
-					k++;
-					x_axis[k]=k;
-					y_axis[k]=1*voltage;
-					k++;
+						  x_axis[k] = k;
+					      y_axis[k] = -1*voltage;
+					      k++;
+					      x_axis[k]=k;
+					      y_axis[k]=1*voltage;
+					      k++;
 						}
 							
 					}
@@ -140,6 +152,7 @@ $(document).ready(function () {
 
 				console.log(x_axis);
 				console.log(y_axis);
+				//setting graph to transit at the middle
 				var copy_x_axis = [];
 				var pos=0.5;
 				copy_x_axis[0]=0;
@@ -152,6 +165,7 @@ $(document).ready(function () {
 						pos+=0.5;
 					}
 				}
+				//setting graph specifications
 				var trace4 = {
 				  x: copy_x_axis, 
 				  y: y_axis, 
@@ -170,7 +184,7 @@ $(document).ready(function () {
 				    font: {size: 16}, 
 				    yref: 'paper'
 				}};
-
+                //calling plotly to plot the graph
 				Plotly.newPlot('differential_manchester', data, layout);
 			}
 
